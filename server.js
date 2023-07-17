@@ -1,16 +1,12 @@
 const express = require('express');
 const app = express();
 
+// Import routes
+const routes = require('./routes')
 
-// Endpoint 1: Hello world
-app.get('/', (req, res) => {
-    res.send('HELLO WORLD!');
-});
+// Use routes
+app.use('/', routes)
 
-// Endpoint 2: About
-app.get('/about', (req, res) => {
-    res.send('This is about page');
-});
 
 // Start the server
 const port = 3000
