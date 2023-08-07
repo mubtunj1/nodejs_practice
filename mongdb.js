@@ -1,20 +1,12 @@
-const { MongoClient } = require('mongodb');
-
-const uri = "mongodb://localhost:207017"
-const db_Name = "practice"
+const mongoose = require('mongoose');
 
 
 // Function to initialize the MongoDB connection
-async function intialiseMongoDB() {
-    try {
-        const client = new MongoClient(uri);
-        await client.connect();
-        console.log('Sucessful connected to data base');
-        return client.db(db_Name);
-    } catch (error) {
-        console.error('Failed to connect to Mongodb', error);
-        process.exit(1);
-    }
+const initializeMongoDB = (url)=> {
+    return mongoose.connect(url, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
 }
 
-module.exports = intialiseMongoDB;
+module.exports = initializeMongoDB;
